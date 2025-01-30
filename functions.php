@@ -57,6 +57,40 @@ function validateForm($data) {
         $errors[] = "Le contenu de la recette est obligatoire.";
     }
 
+    if (empty(trim($data['user_id'])) || !is_numeric($data['user_id'])) {
+        $errors[] = "Le user_id est incorrect";
+    }
+
+    if (empty(trim($data['recipe_id'])) || !is_numeric($data['recipe_id'])) {
+        $errors[] = "Le recipe_id est incorrect";
+    }
+
+    if (empty(trim($data['comment']))) {
+        $errors[] = "Le contenu du commentaire est obligatoire, il ne peux être vide.";
+    }
+
+   
+    $_SESSION['MESSAGE_ERROR'] = $errors;
+
+    return $errors; // Retourne les erreurs pour un traitement ultérieur
+}
+
+function validateFormComment($data) {
+
+    $errors = []; 
+
+    if (empty(trim($data['user_id'])) || !is_numeric($data['user_id'])) {
+        $errors[] = "Le user_id est incorrect";
+    }
+
+    if (empty(trim($data['recipe_id'])) || !is_numeric($data['recipe_id'])) {
+        $errors[] = "Le recipe_id est incorrect";
+    }
+
+    if (empty(trim($data['comment']))) {
+        $errors[] = "Le contenu du commentaire est obligatoire, il ne peux être vide.";
+    }
+
    
     $_SESSION['MESSAGE_ERROR'] = $errors;
 

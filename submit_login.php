@@ -22,6 +22,7 @@ if (isset($postData['email']) && isset($postData['password'])) {
                 $_SESSION['LOGGED_USER'] = [
                     'email' => $postData['email'],
                     'full_name' => $user['full_name'],
+                    'user_id' => $user['User_id'],
                 ];
                 
                 $_SESSION['MESSAGE_SUCCESS'] = "Bonjour {$_SESSION['LOGGED_USER']['email']} et bienvenue sur le site !
