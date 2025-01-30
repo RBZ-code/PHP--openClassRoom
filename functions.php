@@ -91,6 +91,10 @@ function validateFormComment($data) {
         $errors[] = "Le contenu du commentaire est obligatoire, il ne peux être vide.";
     }
 
+    if (empty(trim($data['comment'])) || !is_numeric($data['review'])) {
+        $errors[] = "La note ne peux pas être nul, et doit être comprise entre 0 et 5.";
+    }
+
    
     $_SESSION['MESSAGE_ERROR'] = $errors;
 

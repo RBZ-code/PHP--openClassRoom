@@ -11,7 +11,7 @@ $errors = validateFormComment($postData);
 
 
 if (!empty($errors)) {
-    redirectToUrl('comment_create.php');
+    redirectToUrl("recipes_read.php?id=". $postData['recipe_id']);
     exit();
 }
 
@@ -19,13 +19,15 @@ if (!empty($errors)) {
 $user_id = htmlspecialchars($postData['user_id']);
 $recipe_id = htmlspecialchars($postData['recipe_id']);
 $comment = htmlspecialchars($postData['comment']);
+$review = htmlspecialchars($postData['review']);
 
-$SQLquerry = "INSERT INTO comments(user_id, recipe_id, comment) VALUE(:user_id, :recipe_id, :comment)";
+$SQLquerry = "INSERT INTO comments(user_id, recipe_id, comment, review) VALUE(:user_id, :recipe_id, :comment, :review)";
 $insertComment = $mysqlClient->prepare($SQLquerry);
 $insertComment->execute([
     'user_id' => $user_id,
     'recipe_id' => $recipe_id,
     'comment' => $comment,
+    'review' => $review,
 ]);
 
 
